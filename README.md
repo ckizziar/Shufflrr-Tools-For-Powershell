@@ -1,4 +1,48 @@
-﻿# Add-ShufflrrFile
+# Shufflrr Tools for Powershell
+
+Shufflrr Tools for PowersShell allows you to interact with Shufflrr Sites directly from within Powershell sessions, or using automation tasks. The module currently supports listing directories, uploading files, downloading files, and deleting files. Credentials can either be saved in a profile, or specified with each call.
+
+## Getting Started
+
+You can either download a zip release or clone the repository to get the module files.
+
+### Prerequisites
+
+You will need:
+
+```
+Powershell 3.0+
+```
+
+### Installing
+
+Make sure the place the module somewhere into the Powershell Path, you can find these locations like this:
+
+```
+PS> $env:PSModulePath -split ';'
+C:\Users\yourname\Documents\WindowsPowerShell\Modules
+C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+```
+
+Once you have the module where you want it, simply import it using the Import-Module command.
+
+```
+PS> Import-Module ShufflrrTools
+```
+
+You should be ready to start shuffling. To avoid providing credentials every time you want to ineract with Shufflrr, you can use the Set-ShufflrrConfig Cmdlet to create your profile.
+
+```
+PS> Set-ShufflrrConfig -Site https://myown.shufflrr.com -Email youremail@somewhere.com -Password 'M1s3Cr379@sSw0R@'
+
+Your Shufflrr settings have been saved.
+
+PS>
+```
+
+# Command Reference and Usage
+
+# Add-ShufflrrFile
 
 ## SYNOPSIS
 Adds a file from a Shufflrr site.

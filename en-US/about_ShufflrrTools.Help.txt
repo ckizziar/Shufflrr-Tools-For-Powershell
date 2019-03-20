@@ -2,24 +2,31 @@
 	about_ShufflrrTools
 	
 SHORT DESCRIPTION	
-	This is a short description of the file.
+	Shufflrr Tools interact with Shufflrr Sites.
 	
 LONG DESCRIPTION
-	This is a long description of the file.
-	
-NOTE
-	This is a note.
-	
-TROUBLESHOOTING NOTE
-	
-	
+	Shufflrr Tools for Powershell provides interaction with Shufflrr sites to list contents, upload, download, and delete files. Site and login profile can be saved or specified with each command.
 	
 EXAMPLES
-	Place examples here.
+	C:\PS> Set-ShufflrrConfig -Email "user@shufflrr.com" -Password "M1s3Cr379@sSw0R@"
+	Saves your Shufflrr site profile for future commands.
+	
+	C:\PS> Get-ShufflrrDir -Folder "\My Folder\My Subfolder"
+	name                     id 			fileType	     userPermissions
+	----       	             -- 			--------      	 ---------------
+	My Presentations    999999 	Folder         	Read, Write, Share, FullControl
+	Another Folder       111111 	Folder         	Read, Write, Share, FullControl
+	Test.pptx            	 555555 	Presentation  Read, Write, Share, FullControl
+	
+	C:\PS> Get-ShufflrrFile -ShufflrrPath "My Folder\My File.pptx" -FilePath "C:\Shufflrr\Downloads"
+	Your file has been downloaded.
+	
+	C:\PS> Add-ShufflrrFile -FilePath "C:\My Folder\My File.pptx" -DestFolder "My Folder\My Uploads"
+	Your file has been uploaded.
+	
+	C:\PS> Remove-ShufflrrFile -ShufflrrFile "My Folder\My File.pptx"
+	Your file has been deleted.
 	
 KEYWORDS
 	
-	
-	
-SEE ALSO
-	Place related topics here.
+	Shufflrr, SlideShuffle

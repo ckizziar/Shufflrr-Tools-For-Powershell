@@ -41,7 +41,7 @@ C:\PS> Set-ShufflrrConfig -Site "https://company.shufflrr.com" -Email "user@shuf
 		{
 			Try
 				{
-					New-Item -Path "$RegPath" -Name "STPS" -Force
+					New-Item -Path "$RegPath" -Name "STPS" -Force | Out-Null
 				}
 			Catch
 			{
@@ -65,7 +65,7 @@ C:\PS> Set-ShufflrrConfig -Site "https://company.shufflrr.com" -Email "user@shuf
     	If (!(Test-Path "$RegPath\config")) {
 			Try
 				{
-						New-Item -Path $RegPath\config -Force
+						New-Item -Path $RegPath\config -Force | Out-Null
 				}
 			Catch
 			{
@@ -86,9 +86,11 @@ C:\PS> Set-ShufflrrConfig -Site "https://company.shufflrr.com" -Email "user@shuf
     $RegPath = "$RegPath\config"
     $SecureHash = $SecurePassword | ConvertFrom-SecureString
 
-    New-ItemProperty -Path $RegPath -PropertyType String -Name Site -Value $Site
-	New-ItemProperty -Path $RegPath -PropertyType String -Name Email -Value $Email
-	New-ItemProperty -Path $RegPath -PropertyType String -Name Password -Value $SecureHash
+    New-ItemProperty -Path $RegPath -PropertyType String -Name Site -Value $Site | Out-Null
+	New-ItemProperty -Path $RegPath -PropertyType String -Name Email -Value $Email | Out-Null
+	New-ItemProperty -Path $RegPath -PropertyType String -Name Password -Value $SecureHash | Out-Null
+
+	Write-Output "`nYour Shufflrr settings have been saved.`n"
 }
 <#
 	Function to login to Shufflrr to be used by other components.
@@ -575,7 +577,7 @@ C:\PS> Add-ShufflrrFile -FilePath "C:\My Folder\My File.txt" -DestFolder "My Fol
                                      -WebSession $Global:ShufflrrSession
 
             If ($FileUpload.StatusCode -eq 200 -and $FileUpload.Content -eq "[{`"filename`":`"$fileName`",`"error`":null,`"complete`":true}]") {
-                "File has been successfully uploaded to $($DestFolder)\$($fileName)."
+                "`nFile has been successfully uploaded to $($DestFolder)\$($fileName).`n"
             }
             Else {
                 Write-Error "Something went wrong trying to upload the file, please check the error details and try again." -ErrorAction Stop
@@ -698,9 +700,9 @@ Your file has been deleted.
                             Write-Error "Sorry, the file `"$ShufflrrFile`" does not exist." -ErrorAction Stop
                         }
                         Try {
-                            $DeleteFile = Invoke-RestMethod -Uri "$($Site)/api/files/$($FolderList.id)" -WebSession $Global:ShufflrrSession -Method Delete -Headers $Headers -Body "{ }"
+                            $DeleteFile = Invoke-RestMethod -Uri "$($Site)/api/files/$($FolderList.id[$FolderIndex])" -WebSession $Global:ShufflrrSession -Method Delete -Headers $Headers -Body "{ }"
                             $DeleteFile
-                            Write-Output "Your file has been deleted."
+                            Write-Output "`nYour file has been deleted.`n"
                         }
                         Catch {
                             Write-Error "Sorry, the file could not be deleted at this time. Please check your connection and credentials and try again." -ErrorAction Stop
