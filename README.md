@@ -16,7 +16,7 @@ Powershell 3.0+
 
 ### Installing
 
-Make sure the place the module somewhere into the Powershell Path, you can find these locations like this:
+Make sure to place the module somewhere into the Powershell Path, you can find these locations like this:
 
 ```
 PS> $env:PSModulePath -split ';'
