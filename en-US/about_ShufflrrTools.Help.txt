@@ -8,7 +8,7 @@ LONG DESCRIPTION
 	Shufflrr Tools for Powershell provides interaction with Shufflrr sites to list contents, upload, download, and delete files. Site and login profile can be saved or specified with each command.
 	
 EXAMPLES
-	C:\PS> Set-ShufflrrConfig -Email "user@shufflrr.com" -Password "M1s3Cr379@sSw0R@"
+	C:\PS> Set-ShufflrrConfig -Site 'https:\\mysite.shufflrr.com' -Email 'user@shufflrr.com' -Password 'M1s3Cr379@sSw0R@'
 	Saves your Shufflrr site profile for future commands.
 	
 	C:\PS> Get-ShufflrrDir -Folder "\My Folder\My Subfolder"
