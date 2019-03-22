@@ -668,6 +668,7 @@ Your file has been deleted.
             Try {
                 $DeleteFile = Invoke-RestMethod -Uri "$($Site)/api/files/$($FolderList.id[$FolderIndex])" -WebSession $Global:ShufflrrSession -Method Delete -Headers $Headers -Body "{ }"
                 $DeleteFile
+				Write-Output "`nYour file has been deleted.`n"
             }
             Catch {
                 Return $DeleteFile
