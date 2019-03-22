@@ -12,11 +12,11 @@ EXAMPLES
 	Saves your Shufflrr site profile for future commands.
 	
 	C:\PS> Get-ShufflrrDir -Folder "\My Folder\My Subfolder"
-	name                     id 			fileType	     userPermissions
-	----       	             -- 			--------      	 ---------------
-	My Presentations    999999 	Folder         	Read, Write, Share, FullControl
-	Another Folder       111111 	Folder         	Read, Write, Share, FullControl
-	Test.pptx            	 555555 	Presentation  Read, Write, Share, FullControl
+	name                     id 			fileType	    userPermissions
+	----       	             -- 			--------      	---------------
+	My Presentations         999999 	    Folder        	Read, Write, Share, FullControl
+	Another Folder           111111     	Folder         	Read, Write, Share, FullControl
+	Test.pptx            	 555555     	Presentation    Read, Write, Share, FullControl
 	
 	C:\PS> Get-ShufflrrFile -ShufflrrPath "My Folder\My File.pptx" -FilePath "C:\Shufflrr\Downloads"
 	Your file has been downloaded.

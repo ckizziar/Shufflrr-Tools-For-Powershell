@@ -666,7 +666,7 @@ Your file has been deleted.
             $FolderIndex = $FolderList.FindIndex( {$args[0].name -eq "$($FolderTree[1])" } )
 
             Try {
-                $DeleteFile = Invoke-RestMethod -Uri "$($Site)/api/files/$($FolderList.id)" -WebSession $Global:ShufflrrSession -Method Delete -Headers $Headers -Body "{ }"
+                $DeleteFile = Invoke-RestMethod -Uri "$($Site)/api/files/$($FolderList.id[$FolderIndex])" -WebSession $Global:ShufflrrSession -Method Delete -Headers $Headers -Body "{ }"
                 $DeleteFile
             }
             Catch {
